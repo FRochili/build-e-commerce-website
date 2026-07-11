@@ -12,7 +12,7 @@ export default function FilterAndSortSection() {
     }
     
     return (
-        <div className="flex">
+        <div className="flex w-full">
             {/* Sort Dropdown */}
             <select
                 value={sortBy}
