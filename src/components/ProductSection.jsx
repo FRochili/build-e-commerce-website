@@ -1,8 +1,13 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import useProductStore from "@/lib/store"
 import ProductCard from "./ProductCard"
 
-export default function ProductSection({products}) {
+export default function ProductSection() {
+    const { products, fetchProducts } = useProductStore();
+    useEffect(() => {
+        fetchProducts();
+    }, [fetchProducts])
     // const [selectedCategory, setSelectedCategory] = useState("ALL");
     // const [searchQuery, setSearchQuery] = useState("");
     // const [sortBy, setSortBy] = useState("default");
@@ -44,7 +49,7 @@ export default function ProductSection({products}) {
         <div className="w-full">
 
             <div className="flex">
-                {/*Sort Dropdown*/}
+                {/* Sort Dropdown
                 <select
                     value={sortBy}
                     onChange={(e) => {
@@ -62,10 +67,10 @@ export default function ProductSection({products}) {
                     <option value="price-asc">↑ Price</option>
                     <option value="price-desc">↓ Price</option>
                     <option value="rating">Top Rated</option>
-                </select>
+                </select> */}
 
                 {/*Category Bar*/}
-                <ul className="bg-gray-300 w-full p-4 flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+                {/* <ul className="bg-gray-300 w-full p-4 flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
                     {categories.map((c) => (
                         <li key={c} 
                             onClick={() => handleCategoryChange(c)}
@@ -78,12 +83,12 @@ export default function ProductSection({products}) {
                             {c}
                         </li>
                     ))}
-                </ul>
+                </ul> */}
             </div>
 
             {/*Product Section*/}
             <div id="products" className="bg-yellow-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-                {paginated.map((p) => (
+                {products.map((p) => (
                     <ProductCard key={p.id} products={p} />
                 ))}
             </div>

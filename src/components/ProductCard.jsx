@@ -11,7 +11,7 @@ export default function ProductCard({products}) {
 
                 <div className="flex flex-col gap-2">
                 {/*Product Image*/}
-                <Image
+                <img
                     src={products.image}
                     alt={products.title}
                     width={200}

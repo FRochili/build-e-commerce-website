@@ -15,7 +15,7 @@ export default async function Home() {
       <Header />
       <Hero />
       <main className="flex flex-1 w-full flex-col justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        {/* <ProductSection /> */}
+        <ProductSection />
       </main>
     </div>
   );
