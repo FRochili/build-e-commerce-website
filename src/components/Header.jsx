@@ -3,8 +3,8 @@ import { FaCartArrowDown } from "react-icons/fa"
 
 export default function Header({searchQuery, setSearchQuery}) {
     return (
-        <div className="flex justify-between bg-gray-950 p-4">
-            <h1 className='text-gray-100 font-extrabold text-4xl'>MarketPlace</h1>
+        <div className="w-full flex justify-between bg-gray-50 dark:bg-gray-950 p-4">
+            <h1 className='text-gray-950 dark:text-gray-100 font-extrabold text-4xl'>MarketPlace</h1>
             <div className="flex gap-2">
                 {/* search input */}
                 <input 
