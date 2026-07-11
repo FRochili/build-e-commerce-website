@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import useProductStore from "@/lib/store"
 import ProductCard from "./ProductCard"
+import FilterAndSortSection from "./FilterAndSortSection";
 
 export default function ProductSection() {
     const { products, fetchProducts } = useProductStore();
@@ -47,8 +48,8 @@ export default function ProductSection() {
 
     return (
         <div className="w-full">
-
-            <div className="flex">
+            <FilterAndSortSection />
+            {/* <div className="flex"> */}
                 {/* Sort Dropdown
                 <select
                     value={sortBy}
@@ -84,7 +85,7 @@ export default function ProductSection() {
                         </li>
                     ))}
                 </ul> */}
-            </div>
+            {/* </div> */}
 
             {/*Product Section*/}
             <div id="products" className="bg-yellow-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
