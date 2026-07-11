@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-// import AddToCartButton from "./AddToCartButton";
+import AddToCartButton from "./AddToCartButton";
 
 export default function ProductCard({products}) {
     return(
@@ -43,7 +43,7 @@ export default function ProductCard({products}) {
             
             </Link>
             {/*Add to cart Button*/}
-            {/* <AddToCartButton products={products} /> */}
+            <AddToCartButton product={products} />
 
         </div>
     )
