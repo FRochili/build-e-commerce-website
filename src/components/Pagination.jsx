@@ -4,7 +4,7 @@ import useProductStore from "@/lib/store";
 export default function Pagination() {
     const { currentPage, setCurrentPage } = useProductStore();
     const totalPages = useProductStore((state) => state.getTotalPages());
-    console.log(totalPages)
+    // console.log(totalPages)
 
     return (
         <div className="w-full flex justify-center">
