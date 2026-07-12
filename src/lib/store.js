@@ -55,6 +55,8 @@ const useProductStore = create((set, get) => ({
     isCartOpen: false,
     setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen}),
     cart: [],
+    toast: null,
+    setToast: (message) => set({ toast: message }),
     addToCart: (product) => {
         set((state) => {
             const existingProduct = state.cart.find((item) => item.id === product.id);
@@ -71,6 +73,7 @@ const useProductStore = create((set, get) => ({
                 cart: [...state.cart, {...product, quantity: 1}]
             }
         })
+        set({ toast: product.title})
     },
     removeFromCart: (productId) => {
         const cart = get().cart;

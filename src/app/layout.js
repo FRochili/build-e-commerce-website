@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import CartDrawer from "@/components/CartDrawer";
+import Toast from "@/components/Toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         {children}
         <CartDrawer />
+        <Toast />
       </body>
     </html>
   );

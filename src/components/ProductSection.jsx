@@ -1,10 +1,10 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import useProductStore from "@/lib/store"
 import ProductCard from "./ProductCard"
 
 export default function ProductSection() {
-    const { fetchProducts, getPaginatedProducts, products } = useProductStore();
+    const { fetchProducts, getPaginatedProducts, } = useProductStore();
     
     const paginatedProducts = getPaginatedProducts();
 

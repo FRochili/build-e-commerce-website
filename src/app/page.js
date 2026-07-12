@@ -6,10 +6,10 @@ import ProductSection from "@/components/ProductSection";
 
 export default async function Home() {
   return (
-    <div className="flex flex-col flex-1 justify-center bg-zinc-50 font-sans dark:bg-zinc-900">
+    <div className="min-h-screen flex flex-col bg-zinc-50 font-sans dark:bg-yellow-100">
       <Header />
       <Hero />
-      <main className="flex w-full flex-col justify-between bg-white dark:bg-black sm:items-start">
+      <main className="flex w-full flex-col bg-white dark:bg-black sm:items-start">
         <FilterAndSortSection />
         <ProductSection />
         <Pagination />

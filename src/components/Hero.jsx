@@ -8,7 +8,7 @@ export default function Hero() {
         }
     }
     return (
-        <div className="flex flex-col gap-4 p-4 px-6">
+        <div className="flex flex-col gap-4 p-4 px-6 bg-zinc-900">
             <span className="text-white text-3xl font-extrabold">Everything you need,</span>
             <span className="text-yellow-400 text-3xl font-extrabold">delivered fast.</span>
             <span className="text-gray-500 text-xl font-semibold">Thousands of products, every category</span>
