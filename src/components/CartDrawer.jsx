@@ -4,17 +4,12 @@ import useProductStore from "@/lib/store"
 
 export default function CartDrawer() {
     const {cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity } = useProductStore()
-    // console.log("cart:", cart);
-    // console.log("count:", cartCount());
-    // console.log("count:", cartTotal());
-    const cartCount = cart.reduce(
-        (total, item) => total + item.quantity,
-        0
-    );
-    const cartTotal = cart.reduce(
-        (total, item) => total + item.quantity * item.price,
-        0
-    );
+    const cartCount = useProductStore((state) => state.getCartCount())
+    const cartTotal = useProductStore((state) => state.getCartTotal())
+    
+    console.log("cart:", cart);
+    console.log("count:", cartCount);
+    console.log("total:", cartTotal);
     return (
         <div className="text-gray-900">
             {/* overlay */}

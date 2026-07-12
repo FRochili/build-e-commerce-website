@@ -90,10 +90,10 @@ const useProductStore = create((set, get) => ({
         }))
     },
 
-    cartCount: () => {
+    getCartCount: () => {
         return get().cart.reduce((total, item) => total + item.quantity, 0)
     },
-    cartTotal: () => {
+    getCartTotal: () => {
         return get().cart.reduce((total, item) => total + item.quantity * item.price, 0)
     },
 }));
