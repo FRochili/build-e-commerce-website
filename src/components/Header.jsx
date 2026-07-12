@@ -3,7 +3,7 @@ import { FaCartArrowDown } from "react-icons/fa"
 import useProductStore from "@/lib/store"
 
 export default function Header() {
-    const { searchQuery, setSearchQuery, setCurrentPage } = useProductStore();
+    const { searchQuery, setSearchQuery, setCurrentPage, setIsCartOpen } = useProductStore();
     const handleSearchQuery = (q) => {
         setSearchQuery(q)
         setCurrentPage(1)
@@ -24,6 +24,7 @@ export default function Header() {
                 {/* cart icon */}
                 <div
                     className="relative flex items-center cursor-pointer"
+                    onClick={() => setIsCartOpen(true)}
                 >
                     <FaCartArrowDown className="text-2xl" />
                 </div>

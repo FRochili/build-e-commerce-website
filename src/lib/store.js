@@ -52,16 +52,47 @@ const useProductStore = create((set, get) => ({
     },
 
     //Cart state
+    isCartOpen: false,
+    setIsCartOpen: (isOpen) => set({ isCartOpen: isOpen}),
     cart: [],
     addToCart: (product) => {
-        const cart = get().cart;
-        set({ cart: [...cart, product] });
+        set((state) => {
+            const existingProduct = state.cart.find((item) => item.id === product.id);
+            if (existingProduct) {
+                return {
+                    cart: state.cart.map((item) => 
+                    item.id === product.id
+                    ? {...item, quantity: item.quantity + 1}
+                    : item
+                    )
+                }
+            }
+            return {
+                cart: [...state.cart, {...product, quantity: 1}]
+            }
+        })
     },
     removeFromCart: (productId) => {
         const cart = get().cart;
         set({ cart: cart.filter((item) => item.id !== productId) });
     },
     clearCart: () => set({ cart: [] }),
+    updateQuantity: (product, amount) => {
+        set((state) => ({ 
+            cart: state.cart
+            .map((item) => item.id === product.id
+            ? { ...item, quantity: item.quantity + amount } 
+            : item)
+        .filter((item) => item.quantity > 0)
+        }))
+    },
+
+    cartCount: () => {
+        return get().cart.reduce((total, item) => total + item.quantity, 0)
+    },
+    cartTotal: () => {
+        return get().cart.reduce((total, item) => total + item.quantity * item.price, 0)
+    },
 }));
 
 export default useProductStore;
