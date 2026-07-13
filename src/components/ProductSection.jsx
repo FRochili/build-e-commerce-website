@@ -4,7 +4,10 @@ import useProductStore from "@/lib/store"
 import ProductCard from "./ProductCard"
 
 export default function ProductSection() {
-    const { fetchProducts, getPaginatedProducts, } = useProductStore();
+    // const { fetchProducts, getPaginatedProducts, } = useProductStore();
+    const fetchProducts = useProductStore((state) => state.fetchProducts)
+    const getPaginatedProducts = useProductStore((state) => state.getPaginatedProducts)
+    const loading = useProductStore((state) => state.loading)
     
     const paginatedProducts = getPaginatedProducts();
 

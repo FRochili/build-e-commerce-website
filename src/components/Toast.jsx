@@ -3,7 +3,8 @@ import useProductStore from "@/lib/store"
 import { useRef, useEffect } from "react"
 
 export default function Toast() {
-    const { toast, setToast } = useProductStore()
+    const toast = useProductStore((state) => state.toast)
+    const setToast = useProductStore((state) => state.setToast)
 
     const timerRef = useRef(null)
 

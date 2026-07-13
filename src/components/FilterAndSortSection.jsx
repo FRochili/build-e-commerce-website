@@ -4,7 +4,11 @@ import useProductStore from "@/lib/store"
 const categories = ["ALL", "men's clothing", "jewelery", "electronics", "women's clothing"] 
 
 export default function FilterAndSortSection() {
-    const { sortBy, setSortBy, selectedCategory, setSelectedCategory, setCurrentPage } = useProductStore()
+    const sortBy = useProductStore((state) => state.sortBy)
+    const setSortBy = useProductStore((state) => state.setSortBy)
+    const selectedCategory = useProductStore((state) => state.selectedCategory)
+    const setSelectedCategory = useProductStore((state) => state.setSelectedCategory)
+    const setCurrentPage = useProductStore((state) => state.setCurrentPage)
     
     const handleCategoryChange = (c) => {
         setSelectedCategory(c)

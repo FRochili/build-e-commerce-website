@@ -3,7 +3,11 @@ import Link from "next/link"
 import useProductStore from "@/lib/store"
 
 export default function CartDrawer() {
-    const {cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity } = useProductStore()
+    const cart = useProductStore((state) => state.cart)
+    const isCartOpen = useProductStore((state) => state.isCartOpen)
+    const setIsCartOpen = useProductStore((state) => state.setIsCartOpen)
+    const removeFromCart = useProductStore((state) => state.removeFromCart)
+    const updateQuantity = useProductStore((state) => state.updateQuantity)
     const cartCount = useProductStore((state) => state.getCartCount())
     const cartTotal = useProductStore((state) => state.getCartTotal())
     

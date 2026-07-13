@@ -3,10 +3,12 @@ import { create } from "zustand";
 const useProductStore = create((set, get) => ({
     // fetch products state
     products: [],
+    loading: false,
     fetchProducts: async () => {
+        set({ loading: true });
         const res = await fetch("https://fakestoreapi.com/products");
         const data = await res.json();
-        set({ products: data });
+        set({ products: data, loading: false });
     },
 
     //Filter state

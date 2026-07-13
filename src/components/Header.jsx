@@ -3,7 +3,10 @@ import { FaCartArrowDown } from "react-icons/fa"
 import useProductStore from "@/lib/store"
 
 export default function Header() {
-    const { searchQuery, setSearchQuery, setCurrentPage, setIsCartOpen, cart } = useProductStore();
+    const searchQuery = useProductStore((state) => state.searchQuery)
+    const setSearchQuery = useProductStore((state) => state.setSearchQuery)
+    const setCurrentPage = useProductStore((state) => state.setCurrentPage)
+    const setIsCartOpen = useProductStore((state) => state.setIsCartOpen)
     const cartCount = useProductStore((state) => state.getCartCount())
     const handleSearchQuery = (q) => {
         setSearchQuery(q)

@@ -3,7 +3,11 @@ import Link from "next/link"
 import useProductStore from "@/lib/store"
 
 export default function CartPage() {
-    const { cart, cartCount, cartTotal, removeFromCart, updateQuantity } = useProductStore()
+    const cart = useProductStore((state) => state.cart)
+    const removeFromCart = useProductStore((state) => state.removeFromCart)
+    const updateQuantity = useProductStore((state) => state.updateQuantity)
+    const cartCount = useProductStore((state) => state.getCartCount())
+    const cartTotal = useProductStore((state) => state.getCartTotal())
 
     return (
         <div className="max-w-4xl mx-auto p-8 font-sans">
@@ -57,7 +61,7 @@ export default function CartPage() {
 
                                     {/* remove button */}
                                     <button
-                                        onClick={() => removeFromCart(item)}
+                                        onClick={() => removeFromCart(item.id)}
                                         className="ml-auto text-xs text-red-400 hover:text-red-600 cursor-pointer border border-red-500 rounded-lg p-1" 
                                     >
                                         Remove

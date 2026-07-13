@@ -2,7 +2,7 @@
 import useProductStore from "@/lib/store";
 
 export default function AddToCartButton({product}) {
-    const { addToCart } = useProductStore();
+    const addToCart = useProductStore((state) => state.addToCart);
     return(
         <button 
             onClick={() => addToCart(product)}
