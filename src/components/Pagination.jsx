@@ -5,7 +5,7 @@ export default function Pagination() {
     const currentPage = useProductStore((state) => state.currentPage);
     const setCurrentPage = useProductStore((state) => state.setCurrentPage);
     const totalPages = useProductStore((state) => state.getTotalPages());
-    // console.log(totalPages)
+    console.log(currentPage)
 
     return (
         <div className="w-full flex justify-center">

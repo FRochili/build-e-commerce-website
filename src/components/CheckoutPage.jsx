@@ -31,7 +31,22 @@ export default function CheckoutPage() {
         router.push("/order-confirmation")
     }
 
-    if (cart.length === 0) return 
+    if (cart.length === 0) return (
+        <div className="max-w-4xl mx-auto p-8 font-sans">
+            <div className="flex flex-col items-center gap-6 p-6">
+                <div className="flex flex-col items-center gap-6 p-6 bg-white rounded-lg text-gray-950">
+                        <span className="text-5xl">🛒</span>
+                        <p>Your cart is empty</p>
+                    </div>
+                <Link
+                    href="/"
+                    className="px-4 py-2 text-gray-300 bg-blue-950 rounded-lg border border-gray-500 cursor-pointer text-md"
+                >
+                    ← Continue Shopping
+                </Link>
+            </div>
+        </div>
+    )
 
     return(
         <div className="max-w-4xl mx-auto p-8 font-sans">

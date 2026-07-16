@@ -5,10 +5,20 @@ const useProductStore = create((set, get) => ({
     products: [],
     loading: false,
     fetchProducts: async () => {
-        set({ loading: true });
-        const res = await fetch("https://fakestoreapi.com/products");
-        const data = await res.json();
-        set({ products: data, loading: false });
+        try {
+            const { products } = get();
+            if (products.length > 0) return;
+            set({ loading: true });
+            const res = await fetch("https://fakestoreapi.com/products");
+            if (!res.ok) {
+                throw new Error("Failed to fetch products");
+            }
+            const data = await res.json();
+            set({ products: data, loading: false });
+        } catch (error) {
+            console.error(error);
+            set({ loading: false });
+        }
     },
 
     //Filter state

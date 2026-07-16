@@ -1,7 +1,12 @@
 "use client"
 import Link from "next/link"
+import { useState } from "react";
 
 export default function OrderConfirmation() {
+    const [randomNumber] = useState(() =>
+        Math.floor(Math.random() * 900000) + 100000
+    );
+
     return (
         <div className="max-w-4xl mx-auto p-8 font-sans">
             <div className="bg-white rounded-lg border border-gray-200 p-12 flex flex-col items-center gap-6 text-center">
@@ -20,7 +25,7 @@ export default function OrderConfirmation() {
                 {/* Order Number */}
                 <div className=" bg-gray-100 border border-gray-300 p-6 rounded-lg flex flex-col">
                     <span className="text-gray-500 text-sm uppercase">Order Number</span>
-                    <span className="text-gray-950 text-2xl font-bold">#{Math.floor(Math.random() * 900000) + 100000}</span>
+                    <span className="text-gray-950 text-2xl font-bold">#{randomNumber}</span>
                 </div>
 
                 {/* What's next */}

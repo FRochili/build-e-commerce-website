@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import FilterAndSortSection from "@/components/FilterAndSortSection";
 import Pagination from "@/components/Pagination";
 import ProductSection from "@/components/ProductSection";
+import ProductContainer from "@/components/ProductContainer";
 
 export default async function Home() {
   return (
@@ -11,7 +12,7 @@ export default async function Home() {
       <Hero />
       <main className="flex w-full flex-col bg-white dark:bg-black sm:items-start">
         <FilterAndSortSection />
-        <ProductSection />
+        <ProductContainer />
         <Pagination />
       </main>
     </div>
