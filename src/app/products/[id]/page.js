@@ -1,25 +1,46 @@
+"use client"
 import AddToCartButton from "@/components/AddToCartButton";
 import Link from "next/link";
+import { useState, useEffect, use } from "react";
 
+export default function ProductPage({params}) {
+    const { id } = use(params)
+    const [product, setProduct] = useState(null)
+    const [loading, setLoading] = useState(true)
 
-async function getProduct(id) {
-    try {
-        const res = await fetch(`https://fakestoreapi.com/products/${id}`)
-        if (!res.ok) {
-            throw new Error(`Failed to fetch product: ${res.status}`);
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const res = await fetch(`https://fakestoreapi.com/products/${id}`)
+                if (!res.ok) {
+                    throw new Error(`Failed to fetch: ${res.status}`)
+                }
+                const data = await res.json()
+                setProduct(data)
+            } catch (error) {
+                console.error("fetchProduct error:", error);
+                setProduct(null)
+            } finally {
+                setLoading(false)
+            }
         }
-        const data = await res.json()
-        console.log(data)
-        return data
-    } catch (error) {
-        console.error(error)
-        return null
-    }
-}
+        fetchProduct()
+    }, [id])
 
-export default async function ProductPage({params}) {
-    const { id } = await params
-    const product = await getProduct(id)
+    if (loading) return (
+        <div className="flex justify-center items-center py-24">
+            <p className="text-gray-500">Loading...</p>
+        </div>
+    )
+
+    if (!product) return (
+        <div className="flex flex-col items-center justify-center gap-6 py-24">
+            <p className="text-gray-500">Product not found</p>
+            <Link href="/" className="bg-blue-950 text-white px-6 py-3 rounded-lg font-semibold">
+                ← Back to products
+            </Link>
+        </div>
+    )
 
     return (
         <div className="mx-auto p-8 font-sans">
