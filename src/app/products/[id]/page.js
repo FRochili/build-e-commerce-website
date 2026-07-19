@@ -3,11 +3,20 @@ import Link from "next/link";
 
 
 async function getProduct(id) {
-    const res = await fetch(`https://fakestoreapi.com/products/${id}`)
-    const data = await res.json()
-    console.log(data)
-    return data
+    try {
+        const res = await fetch(`https://fakestoreapi.com/products/${id}`)
+        if (!res.ok) {
+            throw new Error(`Failed to fetch product: ${res.status}`);
+        }
+        const data = await res.json()
+        console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+        return null
+    }
 }
+
 export default async function ProductPage({params}) {
     const { id } = await params
     const product = await getProduct(id)
