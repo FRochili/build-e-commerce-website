@@ -26,7 +26,6 @@ export default function CheckoutPage() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        clearCart()
         // redirect to order confirmation
         router.push("/order-confirmation")
     }

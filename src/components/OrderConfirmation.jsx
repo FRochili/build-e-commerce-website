@@ -1,11 +1,18 @@
 "use client"
 import Link from "next/link"
 import { useState } from "react";
+import useProductStore from "@/lib/store";
 
 export default function OrderConfirmation() {
     const [randomNumber] = useState(() =>
         Math.floor(Math.random() * 900000) + 100000
     );
+
+    const clearCart = useProductStore((state) => state.clearCart);
+
+    const handleClick = (e) => {
+        clearCart()
+    }
 
     return (
         <div className="max-w-4xl mx-auto p-8 font-sans">
@@ -49,6 +56,7 @@ export default function OrderConfirmation() {
                 <Link
                     href="/"
                     className="w-full p-4 bg-blue-950 rounded-lg border border-gray-300 text-white font-bold text-center"
+                    onClick={handleClick}
                 >
                     <p>Continue Shopping →</p>
                 </Link>
